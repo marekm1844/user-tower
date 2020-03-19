@@ -1,0 +1,23 @@
+[package]
+name = "user-tower"
+version = "0.1.0"
+authors = ["Marek Majdak <marek.majdak@sufrago.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+chrono = {version = "0.4.11", features = ["serde"] }
+dotenv = "0.15.0"
+dotenv_codegen="0.15.0"
+tower-web = "0.3.7"
+tokio = "0.2.13"
+
+
+[dependencies.diesel]
+version = "1.4.3"
+default-features = false
+features = ["r2d2","mysql", "chrono"]
