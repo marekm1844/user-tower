@@ -20,13 +20,14 @@ pub mod model;
 pub mod schema;
 
 pub fn main() {
-    let addr = "127.0.0.1:8089".parse().expect("Invalid address");
+    let pool = db::connect();
+    let addr = "127.0.0.1:8088".parse().expect("Invalid address");
 
     println!("Listening on http://{}", addr);
 
     ServiceBuilder::new()
-        .resource(handlers::users::UsersAPI)
-        .middleware(LogMiddleware::new(module_path!()))
+        .resource(handlers::users::UsersAPI::new(pool))
+        //.middleware(LogMiddleware::new(module_path!()))
         .run(&addr)
         .unwrap();
 }
